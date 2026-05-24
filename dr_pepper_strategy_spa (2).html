@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Pepper Digital Strategy Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+        
+        :root {
+            --pepper-burgundy: #711F2E;
+            --pepper-crimson: #9A1B2F;
+            --pepper-cream: #FDFBF7;
+            --pepper-charcoal: #1A1112;
+            --pepper-gold: #D4AF37;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pepper-cream);
+            color: var(--pepper-charcoal);
+        }
+
+        .heading-font {
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--pepper-burgundy);
+            border-bottom: 2px solid var(--pepper-burgundy);
+        }
+
+        .card-interaction {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card-interaction:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(113, 31, 46, 0.1);
+        }
+
+        .step-active {
+            background-color: var(--pepper-burgundy);
+            color: white;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--pepper-cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--pepper-burgundy);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Chosen Palette: Pepper Heritage (Burgundy, Cream, Crimson, Gold) -->
+    
+    <!-- Application Structure Plan: 
+         The SPA is structured as a strategic dashboard rather than a linear report. 
+         1. 'Executive Summary' (Hero): Immediate context of the conversion goal.
+         2. 'Brand & Audience': Interactive visualization of brand pillars and persona needs.
+         3. 'Interactive Wireframe': A logical walk-through of the conversion funnel elements.
+         4. 'Technical Architecture': Visualizing the headless stack and performance goals.
+         5. 'Growth Engine': Roadmap and A/B testing interactive matrices.
+         This layout prioritizes high-level strategic decision-making by grouping technical specs separately from creative direction.
+    -->
+
+    <!-- Visualization & Content Choices: 
+         1. Radar Chart (Chart.js): Visualizes Brand Pillar balance (Heritage vs Innovation).
+         2. Funnel Visual (Custom CSS/HTML): Shows the CRO traffic flow described in the blueprint.
+         3. Performance Metrics (Bar Chart): Visualizes Core Web Vitals targets.
+         4. Flavor Matchmaker Demo (JS Logic): A micro-interaction simulating the 'What's Your 23?' quiz.
+         5. Roadmap Timeline (HTML/CSS): Vertical interactive progression.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+
+    <nav class="fixed top-0 w-full bg-[#FDFBF7]/90 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-[#711F2E] flex items-center justify-center text-[#FDFBF7] font-black italic">DP</div>
+                <span class="heading-font font-black text-xl uppercase tracking-tighter text-[#711F2E]">Blueprint</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-widest text-gray-500">
+                <a href="#strategy" class="nav-link py-2">Strategy</a>
+                <a href="#experience" class="nav-link py-2">Experience</a>
+                <a href="#ai-hub" class="nav-link py-2 text-[#9A1B2F] font-bold">AI Innovation</a>
+                <a href="#technology" class="nav-link py-2">Tech Stack</a>
+                <a href="#growth" class="nav-link py-2">Growth</a>
+            </div>
+            <button class="bg-[#711F2E] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#9A1B2F] transition-colors">
+                DOWNLOAD PDF
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 py-16 text-center">
+            <span class="text-[#D4AF37] font-bold tracking-[0.3em] uppercase text-sm block mb-4">Digital Product Strategy</span>
+            <h1 class="heading-font text-5xl md:text-7xl font-black text-[#711F2E] mb-6 leading-none">THE ONE YOU <br><span class="text-[#9A1B2F]">DESERVE.</span></h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
+                A high-velocity conversion framework designed to unite the "Pepper Perks" loyalty program with physical and digital purchase points through playful non-conformity.
+            </p>
+        </section>
+
+        <!-- Strategy & Brand Section -->
+        <section id="strategy" class="max-w-7xl mx-auto px-4 py-16 border-t border-gray-100">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="heading-font text-3xl font-black text-[#711F2E] mb-4">Brand Strategy & Pillars</h2>
+                    <p class="text-gray-600 mb-8 italic">
+                        This section defines the core identity of the digital experience. We shift Dr Pepper from a commodity beverage to a cultural ritual through three primary pillars.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 card-interaction">
+                            <h3 class="font-bold text-[#711F2E] text-lg mb-2">Flavor Heritage</h3>
+                            <p class="text-sm text-gray-500">Celebrating the proprietary blend of 23 flavors. Not a cola, not a root beer—uniquely Dr Pepper.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 card-interaction">
+                            <h3 class="font-bold text-[#711F2E] text-lg mb-2">Playful Non-Conformity</h3>
+                            <p class="text-sm text-gray-500">Embracing the quirky, bold personality that appeals to Gen Z individualists and pop-culture fans.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-xl">
+                    <h4 class="text-center font-bold uppercase tracking-widest text-xs text-gray-400 mb-6">Strategic Alignment Matrix</h4>
+                    <div class="chart-container">
+                        <canvas id="pillarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversational Wireframe Logic -->
+        <section id="experience" class="bg-[#711F2E] text-white py-20 my-16 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="mb-12">
+                    <h2 class="heading-font text-4xl font-black mb-4">Conversion Architecture</h2>
+                    <p class="text-gray-300 max-w-xl">
+                        Our homepage is not a brochure; it is a funnel. Each component is engineered to drive users toward a store locator or loyalty sign-up.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="p-8 border border-white/20 rounded-2xl bg-white/5">
+                        <div class="text-[#D4AF37] font-black text-3xl mb-4">01</div>
+                        <h3 class="heading-font text-xl font-bold mb-3">Hero Engagement</h3>
+                        <p class="text-sm text-gray-300 mb-6">Interactive 3D can rotation (WebGL) providing immediate sensory satisfaction. Geotargeted retail CTAs based on IP data.</p>
+                        <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#D4AF37]" style="width: 85%"></div>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold mt-2 block tracking-widest">Conversion Weight: High</span>
+                    </div>
+                    <div class="p-8 border border-white/20 rounded-2xl bg-white/5">
+                        <div class="text-[#D4AF37] font-black text-3xl mb-4">02</div>
+                        <h3 class="heading-font text-xl font-bold mb-3">Social Validation</h3>
+                        <p class="text-sm text-gray-300 mb-6">Live UGC Hub using the TikTok #DrPepperDirtySoda hashtag. Direct "Tap to shop ingredients" API integration.</p>
+                        <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#D4AF37]" style="width: 60%"></div>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold mt-2 block tracking-widest">Viral Weight: Medium</span>
+                    </div>
+                    <div class="p-8 border border-white/20 rounded-2xl bg-white/5">
+                        <div class="text-[#D4AF37] font-black text-3xl mb-4">03</div>
+                        <h3 class="heading-font text-xl font-bold mb-3">Gamified Quiz</h3>
+                        <p class="text-sm text-gray-300 mb-6">The "What's Your 23?" matchmaking tool. Captures user preferences and email leads in exchange for rewards.</p>
+                        <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#D4AF37]" style="width: 95%"></div>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold mt-2 block tracking-widest">Engagement Weight: Critical</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Feature Demo -->
+        <section class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div id="quiz-container" class="bg-white p-10 rounded-[40px] shadow-2xl border border-gray-100 min-h-[400px] flex flex-col justify-center">
+                        <div id="quiz-content">
+                            <h3 class="heading-font text-2xl font-black text-[#711F2E] mb-6">Find Your Flavor Persona</h3>
+                            <p id="quiz-text" class="text-gray-500 mb-8">Ready to discover your unique Dr Pepper mix? Let's start with your vibe.</p>
+                            <div id="quiz-options" class="grid grid-cols-1 gap-4">
+                                <button onclick="nextQuizStep(1)" class="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-[#711F2E] hover:bg-[#FDFBF7] transition-all font-semibold text-gray-700">The Bold Risk-Taker</button>
+                                <button onclick="nextQuizStep(1)" class="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-[#711F2E] hover:bg-[#FDFBF7] transition-all font-semibold text-gray-700">The Classic Sophisticate</button>
+                                <button onclick="nextQuizStep(1)" class="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-[#711F2E] hover:bg-[#FDFBF7] transition-all font-semibold text-gray-700">The Sweet Explorer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="heading-font text-3xl font-black text-[#711F2E] mb-4">Interactive Engagement</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        The <strong>"What's Your 23?"</strong> quiz serves as our primary lead magnet. By gamifying the flavor selection process, we reduce choice paralysis and create a data-rich profile for each customer.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <span class="mt-1 w-5 h-5 rounded-full bg-[#D4AF37] flex items-center justify-center text-[10px] text-white">✓</span>
+                            <span class="text-sm text-gray-700"><strong>Data Collection:</strong> Maps flavor notes to user demographics.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="mt-1 w-5 h-5 rounded-full bg-[#D4AF37] flex items-center justify-center text-[10px] text-white">✓</span>
+                            <span class="text-sm text-gray-700"><strong>Social Loop:</strong> Personalized results encourage TikTok/IG sharing.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="mt-1 w-5 h-5 rounded-full bg-[#D4AF37] flex items-center justify-center text-[10px] text-white">✓</span>
+                            <span class="text-sm text-gray-700"><strong>Direct Conversion:</strong> Final step links to local inventory for that specific flavor.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gemini AI Innovation Hub Section -->
+        <section id="ai-hub" class="max-w-7xl mx-auto px-4 py-20 border-t border-gray-100">
+            <div class="text-center mb-12">
+                <span class="text-[#D4AF37] font-bold tracking-[0.2em] uppercase text-xs block mb-3">Live Digital sandbox</span>
+                <h2 class="heading-font text-4xl font-black text-[#711F2E] mb-4">Gemini AI Innovation Lab</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">
+                    Experiment with live AI capabilities powering our digital strategy. Generate custom flavor concepts, visualize can designs with Imagen, and run our automated ad copy engine.
+                </p>
+            </div>
+
+            <!-- AI Sandbox Tabs -->
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden max-w-5xl mx-auto">
+                <div class="flex border-b border-gray-100 bg-gray-50/50">
+                    <button onclick="switchAITab('flavor-lab')" id="tab-flavor-lab" class="flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-[#711F2E] text-[#711F2E]">
+                        🥤 AI Flavor Fusion Lab & Visualizer
+                    </button>
+                    <button onclick="switchAITab('copy-suite')" id="tab-copy-suite" class="flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-transparent text-gray-400 hover:text-[#711F2E]">
+                        ✍️ AI Ad Copywriter Engine
+                    </button>
+                </div>
+
+                <!-- Tab content 1: AI Flavor Fusion Lab -->
+                <div id="ai-tab-content-flavor-lab" class="p-8 md:p-12 space-y-8">
+                    <div class="bg-[#FDFBF7] border border-[#711F2E]/10 rounded-2xl p-6 text-sm text-[#711F2E] flex items-start space-x-3">
+                        <span class="text-lg">💡</span>
+                        <p>
+                            <strong>How it works:</strong> Type your target concept vibe (e.g. <em>"Cyberpunk Energy Drink"</em> or <em>"Cozy Cinnamon Campfire"</em>). Gemini generates a custom ingredient formula + ad pitch. Then, **Imagen 4.0** automatically visualizes a high-fidelity can design mockup in real-time!
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-5 gap-8">
+                        <div class="md:col-span-2 space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Vibe / Concept Prompt</label>
+                                <input id="ai-flavor-vibe" type="text" placeholder="e.g. Tropical Neon Sunset, Midnight gamer elixir..." 
+                                       class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#711F2E] focus:outline-none font-semibold text-gray-700">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Core Modifier Theme</label>
+                                <select id="ai-flavor-modifier" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#711F2E] focus:outline-none font-semibold text-gray-700">
+                                    <option value="Hyper playful and energetic">Playful Non-Conformity (Gen Z)</option>
+                                    <option value="Deep heritage, premium soda fountain classic">Vintage & Heritage (Nostalgic)</option>
+                                    <option value="Sleek, futuristic, high-tech carbonation">Cyberpunk & Esports (Gamers)</option>
+                                    <option value="Sweet, rich, experimental fusion">Exotic Culinary & Dessert Fusion</option>
+                                </select>
+                            </div>
+
+                            <button onclick="generateCustomFlavor()" id="btn-generate-flavor" class="w-full bg-[#711F2E] hover:bg-[#9A1B2F] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-lg transition-colors flex items-center justify-center space-x-2">
+                                <span>🚀 FUSE & VISUALIZE</span>
+                            </button>
+
+                            <div id="flavor-error" class="hidden text-xs text-red-600 font-semibold bg-red-50 p-4 rounded-xl border border-red-100"></div>
+                        </div>
+
+                        <!-- Result display area -->
+                        <div class="md:col-span-3 bg-gray-50 rounded-2xl p-6 border border-gray-200 min-h-[350px] flex flex-col justify-between">
+                            <div id="flavor-loading" class="hidden flex-1 flex-col items-center justify-center py-12 text-center space-y-4">
+                                <div class="w-12 h-12 border-4 border-[#711F2E] border-t-transparent rounded-full animate-spin"></div>
+                                <p class="text-sm font-semibold text-gray-500 animate-pulse" id="flavor-loading-text">Gemini is mixing the 23 secret ingredients...</p>
+                            </div>
+
+                            <div id="flavor-placeholder" class="flex-1 flex flex-col items-center justify-center py-12 text-center">
+                                <span class="text-5xl mb-4">🧪</span>
+                                <h4 class="font-bold text-[#711F2E] text-lg mb-1">Concept Lab Ready</h4>
+                                <p class="text-xs text-gray-400 max-w-xs">Input your custom vibe on the left to activate Gemini and Imagen 4.0 can generation!</p>
+                            </div>
+
+                            <!-- Generated Content Container -->
+                            <div id="flavor-result-container" class="hidden space-y-6">
+                                <div class="flex flex-col sm:flex-row gap-6">
+                                    <div class="flex-1 space-y-4">
+                                        <div>
+                                            <span class="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] block mb-1">GENERATED CONCEPT</span>
+                                            <h3 id="res-flavor-name" class="heading-font text-2xl font-black text-[#711F2E]">Flavor Name</h3>
+                                            <p id="res-flavor-tagline" class="text-sm italic font-semibold text-gray-600">Flavor tagline here</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-1">THE SENSORY PROFILE</span>
+                                            <p id="res-flavor-desc" class="text-xs text-gray-500 leading-relaxed">Description goes here</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-1">SECRET KEY INGREDIENTS</span>
+                                            <div id="res-flavor-ingredients" class="flex flex-wrap gap-2 mt-1">
+                                                <!-- Dyn tags -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Imagen Render Frame -->
+                                    <div class="w-full sm:w-44 h-56 bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center relative">
+                                        <div id="imagen-loading" class="absolute inset-0 bg-white/85 flex flex-col items-center justify-center space-y-2 hidden">
+                                            <div class="w-8 h-8 border-3 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
+                                            <span class="text-[10px] font-bold text-gray-500 animate-pulse uppercase tracking-wider">Designing Can...</span>
+                                        </div>
+                                        <img id="res-can-img" class="w-full h-full object-cover hidden" alt="AI Generated Can Design" src="">
+                                        <div id="res-can-placeholder" class="text-center p-3">
+                                            <span class="text-3xl block mb-1">🥫</span>
+                                            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Visualizer Frame</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab content 2: AI Ad Copy Suite -->
+                <div id="ai-tab-content-copy-suite" class="p-8 md:p-12 space-y-8 hidden">
+                    <div class="grid md:grid-cols-5 gap-8">
+                        <div class="md:col-span-2 space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Target Demographics</label>
+                                <select id="ai-copy-audience" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#711F2E] focus:outline-none font-semibold text-gray-700">
+                                    <option value="Gen-Z Esports Gamers using hyper-modern gaming slang">Gen-Z Gamers (Hyper-Modern Slang)</option>
+                                    <option value="Millennial Culinary Enthusiasts focused on mixology, aesthetic vibes and organic recipes">Millennials (Aesthetic & Culinary)</option>
+                                    <option value="College Football fans obsessed with tailgates, team loyalty and high energy rituals">Sports Fans (High-Energy Rituals)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Campaign Angle</label>
+                                <select id="ai-copy-pillar" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#711F2E] focus:outline-none font-semibold text-gray-700">
+                                    <option value="Uniquely Non-Conformist (celebrate being weird, proprietary, different)">Quirky Non-Conformity</option>
+                                    <option value="Rich Flavor Heritage (built upon the legendary 23-flavor recipe secret)">The 23 Flavor Heritage</option>
+                                    <option value="Exclusive Pepper Perks Rewards (FOMO, scanning receipts to win extreme custom drops)">Loyalty & VIP Drops (Pepper Perks)</option>
+                                </select>
+                            </div>
+
+                            <button onclick="generateAdCopy()" id="btn-generate-copy" class="w-full bg-[#711F2E] hover:bg-[#9A1B2F] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-lg transition-colors flex items-center justify-center space-x-2">
+                                <span>⚡ GENERATE CAMPAIGN</span>
+                            </button>
+
+                            <div id="copy-error" class="hidden text-xs text-red-600 font-semibold bg-red-50 p-4 rounded-xl border border-red-100"></div>
+                        </div>
+
+                        <!-- Result Copy Display -->
+                        <div class="md:col-span-3 bg-gray-50 rounded-2xl p-6 border border-gray-200 min-h-[350px] flex flex-col justify-between">
+                            <div id="copy-loading" class="hidden flex-1 flex-col items-center justify-center py-12 text-center space-y-4">
+                                <div class="w-12 h-12 border-4 border-[#711F2E] border-t-transparent rounded-full animate-spin"></div>
+                                <p class="text-sm font-semibold text-gray-500 animate-pulse">Gemini copywriting team is brainstorming campaigns...</p>
+                            </div>
+
+                            <div id="copy-placeholder" class="flex-1 flex flex-col items-center justify-center py-12 text-center">
+                                <span class="text-5xl mb-4">✍️</span>
+                                <h4 class="font-bold text-[#711F2E] text-lg mb-1">Copy Engine Ready</h4>
+                                <p class="text-xs text-gray-400 max-w-xs">Select target demographic specs on the left to fire up Gemini copywriting mockups!</p>
+                            </div>
+
+                            <div id="copy-result-container" class="hidden space-y-6">
+                                <div class="flex justify-between items-center border-b border-gray-200 pb-3">
+                                    <span class="text-xs font-black uppercase tracking-widest text-[#711F2E]">Generated Ad Suite</span>
+                                    <span class="bg-[#D4AF37] text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded">Targeted</span>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-1">⚡ TikTok Hooks & Video Concept</span>
+                                        <p id="res-copy-tiktok" class="text-xs text-gray-700 bg-white p-3 rounded-lg border border-gray-200 font-medium italic"></p>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-1">📢 Punchy Billboard Header</span>
+                                        <p id="res-copy-hero" class="text-sm font-black text-[#711F2E] bg-white p-3 rounded-lg border border-gray-200"></p>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-1">📧 Email Blast Subject & Hook</span>
+                                        <p id="res-copy-email" class="text-xs text-gray-600 bg-white p-3 rounded-lg border border-gray-200"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack -->
+        <section id="technology" class="max-w-7xl mx-auto px-4 py-20 border-t border-gray-100">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl font-black text-[#711F2E] mb-4">Modern Headless Stack</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto italic">Engineered for sub-second performance and massive traffic spikes during College Football season.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 bg-[#1A1112] text-white rounded-xl flex items-center justify-center mx-auto mb-6 font-bold">NJS</div>
+                    <h4 class="font-bold mb-2">Next.js</h4>
+                    <p class="text-xs text-gray-500">Edge-rendered frontend for SEO and lightning-fast LCP.</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 bg-[#9A1B2F] text-white rounded-xl flex items-center justify-center mx-auto mb-6 font-bold">SNY</div>
+                    <h4 class="font-bold mb-2">Sanity.io</h4>
+                    <h4 class="font-bold mb-2">Sanity.io</h4>
+                    <p class="text-xs text-gray-500">Headless CMS for real-time marketing content orchestration.</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 bg-[#000] text-white rounded-xl flex items-center justify-center mx-auto mb-6 font-bold">SHP</div>
+                    <h4 class="font-bold mb-2">Shopify Plus</h4>
+                    <p class="text-xs text-gray-500">Headless API handling merchandise and loyalty transactions.</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 bg-[#711F2E] text-white rounded-xl flex items-center justify-center mx-auto mb-6 font-bold">VRC</div>
+                    <h4 class="font-bold mb-2">Vercel Edge</h4>
+                    <p class="text-xs text-gray-500">Global distribution ensuring zero latency on all devices.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                <h4 class="text-center font-bold uppercase tracking-widest text-xs text-gray-400 mb-8">Core Web Vitals Target Performance</h4>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap & Growth -->
+        <section id="growth" class="max-w-7xl mx-auto px-4 py-20 bg-[#FDFBF7]">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="heading-font text-3xl font-black text-[#711F2E] mb-6">Launch Roadmap</h2>
+                    <div class="space-y-8 relative">
+                        <div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-[#711F2E]/10"></div>
+                        
+                        <div class="relative pl-10">
+                            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-4 border-[#711F2E] bg-white"></div>
+                            <h4 class="font-bold text-[#711F2E]">Phase 1: Discovery (Weeks 1-4)</h4>
+                            <p class="text-sm text-gray-500">Personas, UX wireframing, and accessibility compliance audit.</p>
+                        </div>
+                        <div class="relative pl-10">
+                            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-4 border-gray-200 bg-white"></div>
+                            <h4 class="font-bold text-gray-400">Phase 2: UI/UX Design (Weeks 5-8)</h4>
+                            <p class="text-sm text-gray-500">3D asset modeling and Tailwind design token configuration.</p>
+                        </div>
+                        <div class="relative pl-10">
+                            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-4 border-gray-200 bg-white"></div>
+                            <h4 class="font-bold text-gray-400">Phase 3: Development (Weeks 9-14)</h4>
+                            <p class="text-sm text-gray-500">Next.js construction and API orchestration.</p>
+                        </div>
+                        <div class="relative pl-10">
+                            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-4 border-gray-200 bg-white"></div>
+                            <h4 class="font-bold text-gray-400">Phase 4: Launch (Weeks 15-16)</h4>
+                            <p class="text-sm text-gray-500">Edge deployment and SEO schema validation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="heading-font text-xl font-bold text-[#711F2E] mb-6">A/B Testing Framework</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-sm">Hero CTA Priority</span>
+                                <span class="bg-[#D4AF37] text-white px-2 py-0.5 rounded text-[10px] font-bold">PRIORITY</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Testing "Join Pepper Perks" vs "Find Near Me" as the primary action button to measure offline intent.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-sm">Interactive Quiz vs Static</span>
+                                <span class="bg-gray-200 text-gray-500 px-2 py-0.5 rounded text-[10px] font-bold">SECONDARY</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Measuring time-on-site and lead capture rates between the gamified quiz and standard SKU grid.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-sm">Social Proof Placement</span>
+                                <span class="bg-gray-200 text-gray-500 px-2 py-0.5 rounded text-[10px] font-bold">LOW</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Impact of UGC hub placement above vs below the fold on mobile scrolling behavior.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#1A1112] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <div class="w-12 h-12 rounded-full bg-[#711F2E] flex items-center justify-center text-[#FDFBF7] font-black italic mb-4">DP</div>
+                <p class="text-sm text-gray-500 max-w-xs">The Digital Product Strategy Blueprint for the next generation of Peppers.</p>
+            </div>
+            <div class="flex space-x-12">
+                <div>
+                    <h5 class="text-[#D4AF37] font-bold uppercase text-xs mb-4 tracking-widest">Resources</h5>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>Brand Guidelines</li>
+                        <li>Tech Stack Docs</li>
+                        <li>API Documentation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[#D4AF37] font-bold uppercase text-xs mb-4 tracking-widest">Contact</h5>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>Agency Partner</li>
+                        <li>Development Team</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pt-12 mt-12 border-t border-white/10 text-center text-[10px] text-gray-600 tracking-widest uppercase">
+            &copy; 2024 Dr Pepper Strategy Blueprint | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        // Data derived from the Source Report Strategy
+        const brandPillars = {
+            labels: ['Heritage', 'Non-Conformity', 'Ritual', 'Flavor Complexity', 'Fandom'],
+            datasets: [{
+                label: 'Brand Strategy Focus',
+                data: [95, 90, 85, 98, 88],
+                backgroundColor: 'rgba(113, 31, 46, 0.2)',
+                borderColor: '#711F2E',
+                pointBackgroundColor: '#D4AF37',
+                borderWidth: 2
+            }]
+        };
+
+        const performanceData = {
+            labels: ['LCP (Loading)', 'INP (Interaction)', 'CLS (Stability)', 'First Content Paint'],
+            datasets: [{
+                label: 'Performance Target (ms)',
+                data: [1500, 100, 0.1, 800],
+                backgroundColor: ['#711F2E', '#9A1B2F', '#D4AF37', '#1A1112'],
+                borderRadius: 8
+            }]
+        };
+
+        // Initialize Charts
+        window.onload = function() {
+            const ctxPillar = document.getElementById('pillarChart').getContext('2d');
+            new Chart(ctxPillar, {
+                type: 'radar',
+                data: brandPillars,
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            const ctxPerf = document.getElementById('performanceChart').getContext('2d');
+            new Chart(ctxPerf, {
+                type: 'bar',
+                data: performanceData,
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f0f0f0' }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Interactive Quiz Logic
+        let currentStep = 0;
+        const quizData = [
+            { text: "What's your primary flavor profile?", options: ["Spicy & Bold", "Sweet & Creamy", "Dark & Fruity"] },
+            { text: "When do you need your Pepper?", options: ["Game Day Energy", "Chill Relaxation", "Late Night Focus"] },
+            { text: "Finding your perfect 23...", options: [] }
+        ];
+
+        function nextQuizStep(choice) {
+            currentStep++;
+            const content = document.getElementById('quiz-content');
+            
+            if (currentStep < 2) {
+                document.getElementById('quiz-text').innerText = quizData[currentStep].text;
+                const optionsHtml = quizData[currentStep].options.map(opt => 
+                    `<button onclick="nextQuizStep()" class="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-[#711F2E] hover:bg-[#FDFBF7] transition-all font-semibold text-gray-700">${opt}</button>`
+                ).join('');
+                document.getElementById('quiz-options').innerHTML = optionsHtml;
+            } else {
+                content.innerHTML = `
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-[#D4AF37] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-white text-3xl">✓</span>
+                        </div>
+                        <h3 class="heading-font text-2xl font-black text-[#711F2E] mb-2">The Spicy Rebel</h3>
+                        <p class="text-gray-500 mb-8 text-sm">Your profile matches <strong>Dr Pepper Cherry</strong>. We found 3 stores near you with stock!</p>
+                        <button onclick="location.reload()" class="bg-[#711F2E] text-white px-8 py-3 rounded-full font-bold hover:bg-[#9A1B2F]">Get Coupon</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Simple Nav Scroll Spy
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Gemini API configuration
+        // Leave apiKey as-is (empty string). Canvas runtime environment handles API keys safely on-the-fly.
+        const apiKey = "";
+        
+        // Tab switching utility
+        function switchAITab(tabId) {
+            document.getElementById('ai-tab-content-flavor-lab').classList.add('hidden');
+            document.getElementById('ai-tab-content-copy-suite').classList.add('hidden');
+            
+            document.getElementById('tab-flavor-lab').className = "flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-transparent text-gray-400 hover:text-[#711F2E]";
+            document.getElementById('tab-copy-suite').className = "flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-transparent text-gray-400 hover:text-[#711F2E]";
+            
+            if (tabId === 'flavor-lab') {
+                document.getElementById('ai-tab-content-flavor-lab').classList.remove('hidden');
+                document.getElementById('tab-flavor-lab').className = "flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-[#711F2E] text-[#711F2E]";
+            } else {
+                document.getElementById('ai-tab-content-copy-suite').classList.remove('hidden');
+                document.getElementById('tab-copy-suite').className = "flex-1 py-5 px-6 font-bold text-sm tracking-wide uppercase transition-colors text-center border-b-2 border-[#711F2E] text-[#711F2E]";
+            }
+        }
+
+        // Utility to fetch with exponential backoff if throttled
+        async function fetchWithRetry(url, options, maxRetries = 3) {
+            let delay = 1000;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) return await response.json();
+                    if (response.status === 429) {
+                        // Throttling: Exponential Backoff
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                        continue;
+                    }
+                    throw new Error(`API returned error state: ${response.statusText}`);
+                } catch (err) {
+                    if (i === maxRetries - 1) throw err;
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // AI Flavor Concept Lab Main Controller
+        async function generateCustomFlavor() {
+            const vibe = document.getElementById('ai-flavor-vibe').value.trim() || "Retro Galactic Gamer";
+            const theme = document.getElementById('ai-flavor-modifier').value;
+            
+            // Show loaders, hide layouts
+            document.getElementById('flavor-placeholder').classList.add('hidden');
+            document.getElementById('flavor-result-container').classList.add('hidden');
+            document.getElementById('flavor-loading').classList.remove('hidden');
+            document.getElementById('flavor-error').classList.add('hidden');
+            
+            const systemPrompt = "You are a world-class creative beverage development agent for Dr Pepper. Generate custom, highly engaging, tasty, and futuristic Dr Pepper 23-flavor concept formulas. Provide results strictly matching the requested JSON Schema.";
+            const userQuery = `Create a completely new experimental custom Dr Pepper beverage flavor based on the user's vibe: "${vibe}" using the brand style: "${theme}". Suggest 3 unique ingredients that pair beautifully with the classic Dr Pepper base. Make the tagline punchy and the can visualizer description detailed for Imagen production.`;
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "flavorName": { "type": "STRING" },
+                            "tagline": { "type": "STRING" },
+                            "description": { "type": "STRING" },
+                            "keyIngredients": {
+                                "type": "ARRAY",
+                                "items": { "type": "STRING" }
+                            },
+                            "imagePrompt": { "type": "STRING", "description": "Highly descriptive image prompt detailing a stunning minimalist aluminum beverage can mock-up design featuring modern labels matching this flavor. Front centered perspective, professional studio lighting, clean background, appetizing water droplets." }
+                        },
+                        required: ["flavorName", "tagline", "description", "keyIngredients", "imagePrompt"]
+                    }
+                },
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            try {
+                // Fetch structured copy from Gemini
+                const result = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const contentPart = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!contentPart) throw new Error("Invalid format received from Gemini.");
+                
+                const data = JSON.parse(contentPart);
+                
+                // Populate content UI fields
+                document.getElementById('res-flavor-name').innerText = data.flavorName;
+                document.getElementById('res-flavor-tagline').innerText = data.tagline;
+                document.getElementById('res-flavor-desc').innerText = data.description;
+                
+                const ingredientsContainer = document.getElementById('res-flavor-ingredients');
+                ingredientsContainer.innerHTML = '';
+                data.keyIngredients.forEach(ingredient => {
+                    const el = document.createElement('span');
+                    el.className = "bg-[#711F2E]/10 text-[#711F2E] text-[10px] font-black uppercase px-2 py-1 rounded-full border border-[#711F2E]/20";
+                    el.innerText = ingredient;
+                    ingredientsContainer.appendChild(el);
+                });
+
+                // Display UI Text
+                document.getElementById('flavor-loading').classList.add('hidden');
+                document.getElementById('flavor-result-container').classList.remove('hidden');
+
+                // Trigger Imagen 4.0 Visual Generation
+                await generateCanMockup(data.imagePrompt);
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('flavor-loading').classList.add('hidden');
+                document.getElementById('flavor-placeholder').classList.remove('hidden');
+                const errorBox = document.getElementById('flavor-error');
+                errorBox.innerText = `Error: ${err.message}. Please verify connectivity.`;
+                errorBox.classList.remove('hidden');
+            }
+        }
+
+        // Can design generator using Imagen-4.0
+        async function generateCanMockup(imagePrompt) {
+            const imagenLoading = document.getElementById('imagen-loading');
+            const canImg = document.getElementById('res-can-img');
+            const canPlaceholder = document.getElementById('res-can-placeholder');
+            
+            imagenLoading.classList.remove('hidden');
+            canImg.classList.add('hidden');
+            canPlaceholder.classList.add('hidden');
+
+            const optimizedPrompt = `A high fidelity, sleek commercial product shot of: ${imagePrompt}. Modern styled canned beverage art, 3D render look, flawless lighting, commercial drink advertisement photography.`;
+            const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+            
+            const payload = { 
+                instances: { prompt: optimizedPrompt }, 
+                parameters: { "sampleCount": 1 } 
+            };
+
+            try {
+                const response = await fetch(imagenUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                
+                if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                    const base64Data = result.predictions[0].bytesBase64Encoded;
+                    canImg.src = `data:image/png;base64,${base64Data}`;
+                    canImg.classList.remove('hidden');
+                } else {
+                    throw new Error("Imagen generation did not return valid bytes.");
+                }
+            } catch (err) {
+                console.error("Imagen image failed, rendering fallback emoji can style: ", err);
+                canPlaceholder.classList.remove('hidden');
+            } finally {
+                imagenLoading.classList.add('hidden');
+            }
+        }
+
+        // AI Ad Copy Suite Main Controller
+        async function generateAdCopy() {
+            const audience = document.getElementById('ai-copy-audience').value;
+            const pillar = document.getElementById('ai-copy-pillar').value;
+            
+            document.getElementById('copy-placeholder').classList.add('hidden');
+            document.getElementById('copy-result-container').classList.add('hidden');
+            document.getElementById('copy-loading').classList.remove('hidden');
+            document.getElementById('copy-error').classList.add('hidden');
+
+            const systemPrompt = "You are a professional ad agency copywriter. Output structured advertising campaigns strictly in the specified JSON schema format.";
+            const userQuery = `Write high-converting ad copy targeting: "${audience}" promoting the core campaign concept: "${pillar}". Produce creative, energetic copy matching the legendary playful flavor of Dr Pepper. Include a TikTok video script prompt/hook, a billboard title, and a targeted email campaign starter.`;
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "tiktokHook": { "type": "STRING" },
+                            "billboardHeader": { "type": "STRING" },
+                            "emailSubjectAndBody": { "type": "STRING" }
+                        },
+                        required: ["tiktokHook", "billboardHeader", "emailSubjectAndBody"]
+                    }
+                },
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            try {
+                const result = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const contentPart = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!contentPart) throw new Error("Invalid structure from copywriting engine.");
+                
+                const data = JSON.parse(contentPart);
+                
+                document.getElementById('res-copy-tiktok').innerText = data.tiktokHook;
+                document.getElementById('res-copy-hero').innerText = data.billboardHeader;
+                document.getElementById('res-copy-email').innerText = data.emailSubjectAndBody;
+
+                document.getElementById('copy-loading').classList.add('hidden');
+                document.getElementById('copy-result-container').classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('copy-loading').classList.add('hidden');
+                document.getElementById('copy-placeholder').classList.remove('hidden');
+                const errorBox = document.getElementById('copy-error');
+                errorBox.innerText = `Error generating copywriting mockups: ${err.message}`;
+                errorBox.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
